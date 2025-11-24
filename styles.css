@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "fuenteSpaceMono";
+    src: url("./tipografia/SpaceMono/SpaceMono-Regular.ttf");
+}
+
+@font-face {
+    font-family: "fuenteTerminal";
+    src: url("./tipografia/TerminalGrotesque/terminal-grotesque.ttf");
+}
+
+@font-face {
+    font-family: "fuenteNeueHaasGrotesk";
+    src: url("./tipografia/NeueHaasGrotesk/NHaasGroteskTXPro-75Bd.ttf");
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+h1 {
+    font-family: "fuenteTerminal", "Fira Sans Condensed", sans-serif;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+h2,
+h3,
+h4 {
+    font-family: "fuenteNeueHaasGrotesk", "IBM Plex Sans", sans-serif;
+    color: #fff;
+}
+
+p {
+    font-family: "fuenteSpaceMono", 'Space Mono', monospace;
+    color: #f0f0f0;
+    margin-bottom: 1rem;
+}
+
+button {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #333;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/*GRID*/
+.project {
+    display: grid;
+    gap: 14px
+}
+
+.project__media {
+    order: 1
+}
+
+.project__content {
+    order: 2
+}
+
+@media (min-width:960px) {
+    .project {
+        grid-template-columns: 1fr 1fr;
+        align-items: center
+    }
+
+    .project .project__media {
+        order: 1
+    }
+
+    .project .project__content {
+        order: 2
+    }
+
+    .project.project--reverse .project__media {
+        order: 2
+    }
+
+    .project.project--reverse .project__content {
+        order: 1;
+        text-align: right
+    }
+}
+
+.modal {
+    border: none;
+    padding: 0;
+    margin: 0;
+    max-width: min(900px, 92vw);
+    background: transparent;
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-card {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    margin: 10vh auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+
+.modal.is-opening .modal-card {
+    transform: scale(0.98);
+    opacity: 0.8;
+}
+
+.modal[open] .modal-card {
+    transition: transform .15s ease, opacity .15s ease;
+    transform: none;
+    opacity: 1;
+}
+
+.modal.is-closing .modal-card {
+    transform: scale(0.98);
+    opacity: 0.0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .modal.is-opening .modal-card,
+    .modal[open] .modal-card,
+    .modal.is-closing .modal-card {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+}
+
+/* === Legacy styles merged from (ANTIGUA) without Bootstrap helpers === */
+.h1-sm {
+    font-size: calc(1.5em + 6vw);
+}
+
+.h1-md {
+    font-size: calc(2em + 6vw);
+}
+
+.h2-sm {
+    font-size: calc(1.5em + 5vw);
+}
+
+.h2-md {
+    font-size: calc(1em + 2.5vw);
+}
+
+.p-sm {
+    font-size: calc(0.6em + 2.2vw);
+}
+
+.p-md {
+    font-size: calc(0.5em + 1vw);
+}
+
+svg {
+    color: white;
+}
+
+video {
+    filter: opacity(0.5);
+}
+
+.about {
+    background: rgb(9, 9, 9);
+    background: linear-gradient(180deg, rgba(9, 9, 9, 1) 0%, rgba(14, 14, 14, 1) 10%, rgba(0, 93, 174, 1) 40%, rgba(1, 93, 174, 1) 51%, rgba(9, 95, 170, 1) 55%, rgba(243, 137, 73, 1) 92%, rgba(255, 139, 68, 1) 100%);
+    background-attachment: fixed;
+}
+
+.link-about-sm {
+    margin-left: 4%;
+    text-decoration: none;
+    color: #fff;
+    text-align: left;
+    font-family: fuenteSpaceMono;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: calc(1rem + 1vw);
+}
+
+.link-about-md {
+    margin-left: 10px;
+    color: #fff;
+    text-align: left;
+    font-family: fuenteSpaceMono;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: calc(0.9rem + 0.3vw);
+}
+
+.carousel {
+    max-width: 100%;
+}
+
+.rot {
+    transform: rotate(40deg);
+}
+
+.statement-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: auto;
+    font-weight: bold;
+}
+
+.small-iframe {
+    display: block;
+    background: #000;
+    border: none;
+    width: 100vw;
+}
+
+.CV-outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 98%;
+    width: 100%;
+}
+
+.CV-middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.CV-inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.reel-container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.reel-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: max-content;
+}
+
+.reel-container img {
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: max-content;
+}
+
+.iframe-container-s,
+.iframe-container-m,
+.iframe-container-l {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.iframe-container-s {
+    width: 85%;
+    padding-top: 85%;
+}
+
+.iframe-container-m {
+    margin-left: 22.5%;
+    margin-right: 0;
+    padding: 0;
+    width: 55%;
+    padding-top: 55%;
+}
+
+.iframe-container-l {
+    width: 40%;
+    padding-top: 40%;
+}
+
+.dc-iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-color: #575757;
+    border-width: 1px;
+}
+
+.dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#0a0a0a 80%, transparent 10%);
+    background-size: 10px 10px;
+}
